@@ -1,6 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from . import models, serializers
+from django.shortcuts import get_object_or_404
 
 # Create your views here.
 class Feed(APIView):
@@ -21,3 +22,11 @@ class Feed(APIView):
         serializer = serializers.ImageSerializer(sorted_list, many = True)
 
         return Response(serializer.data)
+
+class LikeImage(APIView):
+
+    def get(self, request, image_id, format=None):
+        
+        print(image_id)
+
+        return Response(status=200)

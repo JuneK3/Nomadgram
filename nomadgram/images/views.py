@@ -66,7 +66,7 @@ class CommentOnImage(APIView):
 
         if serializer.is_valid():
 
-            serializer.save(creator=user, image = found_image)
+            serializer.save(creator=user, image=found_image)
 
             return Response(data=serializer.data, status=status.HTTP_201_CREATED)
 
@@ -79,7 +79,7 @@ class Comment(APIView):
         user = request.user
 
         try:
-            comment = models.Comment.objects.get(id=comment_id)
+            comment = models.Comment.objects.get(id=comment_id, creator=user)
             comment.delete()
             return Response(status=status.HTTP_204_NO_CONTENT)
             

@@ -2,6 +2,8 @@ from rest_framework import serializers
 from . import models
 from nomadgram.users import serializers as user_serializers
 from nomadgram.images import serializers as image_serializers
+from taggit_serializer.serializers import (TagListSerializerField,
+                                           TaggitSerializer)
 
 class NotificationSerializer(serializers.ModelSerializer):
 
